@@ -31,7 +31,7 @@
 
 ### Вывод данных
 
-Данные сохраняются csv формате в базовой директории в файле "robots_positions.csv"
+Данные сохраняются в csv формате в базовой директории в файле "robots_positions.csv"
 <img width="957" alt="image" src="https://github.com/Devayter/robopro_test/assets/103175986/456d9831-f48d-4889-9c41-3c863f3ea5e9">
 
 
