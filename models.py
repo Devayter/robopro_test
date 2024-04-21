@@ -2,6 +2,8 @@ from typing import List
 
 import numpy as np
 
+from constants import TRANSFORMATION_MATRIX_SIZE
+
 
 class DHKinematics:
     """
@@ -11,7 +13,7 @@ class DHKinematics:
         self.joints = [Joint(params) for params in joints_params]
 
     def forward_kinematics(self):
-        T = np.eye(4)
+        T = np.eye(TRANSFORMATION_MATRIX_SIZE)
         for joint in self.joints:
             T = np.dot(T, joint.dh_matrix())
         return T
