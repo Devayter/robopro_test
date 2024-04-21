@@ -13,6 +13,9 @@ class DHKinematics:
         self.joints = [Joint(params) for params in joints_params]
 
     def forward_kinematics(self):
+        """
+        Метод получения общей матрицы преобразования T.
+        """
         T = np.eye(TRANSFORMATION_MATRIX_SIZE)
         for joint in self.joints:
             T = np.dot(T, joint.dh_matrix())
@@ -27,6 +30,10 @@ class Joint:
         self.a, self.alpha, self.d, self.theta = params
 
     def dh_matrix(self):
+        """
+        Метод генерация матрицы преобразования Денавита-Хартенберга для 
+        соответствующего сочленения.
+        """
         return np.array([
             [
                 np.cos(self.theta),

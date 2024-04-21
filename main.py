@@ -16,6 +16,9 @@ from models import DHKinematics
 
 
 def get_models(sock: socket):
+    """
+    Функция получения списка моделей DHKinematics для дальнейшего расчета.
+    """
     dh_models = []
     for i in range(NUMBER_OF_MESSAGES):
         data, addr = sock.recvfrom(BUFFER_SIZE)
@@ -35,6 +38,9 @@ def get_models(sock: socket):
 
 
 def get_results(dh_models: List[DHKinematics]):
+    """
+    Функция расчета финальной позиции и ориентации робота.
+    """
     results = []
     for i, dh_model in enumerate(dh_models, 1):
         T = dh_model.forward_kinematics()
@@ -52,12 +58,24 @@ def get_results(dh_models: List[DHKinematics]):
 
 
 def write_results_to_file(results):
+    """
+    Функция вывода результатов в файл.
+    """
     with open(FILE_NAME, 'w', encoding=ENCODING_FORMAT) as f:
         writer = csv.writer(f, dialect=csv.unix_dialect)
         writer.writerows([OUTPUT_FILES_COLUMNS, *results])
 
 
 def main():
+    """
+    Основная функция приложения для работы с манипулятором через UDP протокол.
+    Функция выполняет следующие действия:
+    1. Настройка логгирования.
+    2. Создание UDP сокета и отправка запроса на сервер для получения данных.
+    3. Получение и преобразование данных в модели Денавита-Хартенберга.
+    4. Рассчет прямой задачи кинематики.
+    5. Запись результатов расчетов в файл.
+    """
     logging.basicConfig(format=LOGGING_FORMAT, level=logging.INFO)
     logger = logging.getLogger(__name__)
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
