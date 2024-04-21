@@ -9,7 +9,7 @@ UDP_PORT = 8088
 
 DATA_FORMAT = '<Q6d'
 ENCODING_FORMAT = 'utf-8'
-FILE_NAME = 'robots_position.csv'
+FILE_NAME = 'robots_positions.csv'
 GOT_RESPONSE = 'Успешное получение ответа'
 LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 NOT_ENOUGHT_THETAS_RECEIVED = (
