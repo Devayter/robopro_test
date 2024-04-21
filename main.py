@@ -17,7 +17,7 @@ from models import DHKinematics
 
 def get_models(sock: socket):
     """
-    Функция получения списка моделей DHKinematics для дальнейшего расчета.
+    Функция получения списка моделей DHKinematics для дальнейшего рассчета.
     """
     dh_models = []
     for i in range(NUMBER_OF_MESSAGES):
@@ -39,7 +39,7 @@ def get_models(sock: socket):
 
 def get_results(dh_models: List[DHKinematics]):
     """
-    Функция расчета финальной позиции и ориентации робота.
+    Функция рассчета финальной позиции и ориентации робота в пространстве.
     """
     results = []
     for i, dh_model in enumerate(dh_models, 1):
