@@ -131,5 +131,5 @@ dmypy.json
 .vscode
 
 # Files
-robots_position.csv
+robots_positions.csv
 a.out
