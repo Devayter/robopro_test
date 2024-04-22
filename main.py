@@ -3,7 +3,7 @@ import logging
 import socket
 import struct
 from copy import deepcopy
-from typing import List
+from typing import List, Tuple
 
 
 from constants import (
@@ -15,7 +15,7 @@ from constants import (
 from models import DHKinematics
 
 
-def get_models(sock: socket):
+def get_models(sock: socket.socket) -> List[DHKinematics]:
     """
     Функция получения списка моделей DHKinematics для дальнейшего рассчета.
     """
@@ -37,7 +37,7 @@ def get_models(sock: socket):
     return dh_models
 
 
-def get_results(dh_models: List[DHKinematics]):
+def get_results(dh_models: List[DHKinematics]) -> List[Tuple[int, str, str]]:
     """
     Функция рассчета финальной позиции и ориентации робота в пространстве.
     """
@@ -57,7 +57,7 @@ def get_results(dh_models: List[DHKinematics]):
     return results
 
 
-def write_results_to_file(results):
+def write_results_to_file(results) -> None:
     """
     Функция вывода результатов в файл.
     """
