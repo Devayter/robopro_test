@@ -11,15 +11,16 @@ class DHKinematics:
     """
     def __init__(self, joints_params: List[List[float]]):
         self.joints = [Joint(params) for params in joints_params]
+        self.T = None
 
     def forward_kinematics(self):
         """
         Метод получения общей матрицы преобразования T.
         """
-        T = np.eye(TRANSFORMATION_MATRIX_SIZE)
+        self.T = np.eye(TRANSFORMATION_MATRIX_SIZE)
         for joint in self.joints:
-            T = np.dot(T, joint.dh_matrix())
-        return T
+            self.T = np.dot(self.T, joint.dh_matrix())
+        return self.T
 
 
 class Joint:
