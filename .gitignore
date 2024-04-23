@@ -133,3 +133,4 @@ dmypy.json
 # Files
 robots_positions.csv
 a.out
+.DS_Store
