@@ -17,7 +17,7 @@ from models import DHKinematics
 
 def get_models(sock: socket.socket) -> List[DHKinematics]:
     """
-    Функция получения списка моделей DHKinematics для дальнейшего рассчета.
+    Функция получения списка моделей DHKinematics для дальнейшего расчета.
     """
     dh_models = []
     for i in range(NUMBER_OF_MESSAGES):
@@ -39,7 +39,7 @@ def get_models(sock: socket.socket) -> List[DHKinematics]:
 
 def get_results(dh_models: List[DHKinematics]) -> List[Tuple[int, str, str]]:
     """
-    Функция рассчета финальной позиции и ориентации робота в пространстве.
+    Функция расчета финальной позиции и ориентации робота в пространстве.
     """
     results = []
     for i, dh_model in enumerate(dh_models, 1):
@@ -73,8 +73,8 @@ def main():
     1. Настройка логгирования.
     2. Создание UDP сокета и отправка запроса на сервер для получения данных.
     3. Получение и преобразование данных в модели Денавита-Хартенберга.
-    4. Рассчет прямой задачи кинематики.
-    5. Запись результатов рассчетов в файл.
+    4. Расчет прямой задачи кинематики.
+    5. Запись результатов расчетов в файл.
     """
     logging.basicConfig(format=LOGGING_FORMAT, level=logging.INFO)
     logger = logging.getLogger(__name__)
